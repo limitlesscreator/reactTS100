@@ -2,6 +2,7 @@ import s from './Dialogs.module.css'
 import {DialogItem} from "./DialogItem/DialogItem";
 import React from "react";
 import {Message} from "./Message/Message";
+import {MessagesPageType} from "../../redux/state";
 
 
 type MessageType = {
@@ -13,15 +14,14 @@ type DialogType = {
     id: number
 }
 type PropsPosts = {
-    dialogs: Array<DialogType>
-    messages:Array<MessageType>
+    state: MessagesPageType
 }
 
 
 export const Dialogs = (props:PropsPosts) => {
 
-    let dialogsElements = props.dialogs.map (d =><DialogItem name={d.name} id={d.id}/>)
-    let messagesElements = props.messages.map(m => <Message message={m.message} id={m.id}/>)
+    let dialogsElements = props.state.dialogs.map (d =><DialogItem name={d.name} id={d.id}/>)
+    let messagesElements = props.state.messages.map(m => <Message message={m.message} id={m.id}/>)
 
     return (
         <div className={s.dialogs}>

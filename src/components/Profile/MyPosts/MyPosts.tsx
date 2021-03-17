@@ -6,6 +6,7 @@ import {PostType} from "../../../redux/state";
 
 type PropsType = {
     posts: Array<PostType>
+    addPost: (m: string) => void
 }
 
 export const MyPosts = (props: PropsType) => {
@@ -16,7 +17,10 @@ export const MyPosts = (props: PropsType) => {
 
     let addPost = () => {
         let text = newPostElement.current?.value
-        alert(text)
+        if (text) {
+            props.addPost(text)
+        }
+
     }
 
     return (

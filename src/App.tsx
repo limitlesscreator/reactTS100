@@ -11,8 +11,9 @@ import {Settings} from "./components/Settings/Settings";
 import {StateType} from "./redux/state";
 
 
-type PropsType = {
+export type PropsType = {
     state: StateType
+    addPost: (m: string) => void
 }
 
 const App = (props: PropsType) => {
@@ -23,8 +24,11 @@ const App = (props: PropsType) => {
                 <Navbar/>
                 <div className='app-wraper-content'>
                     <Route exact path={'/dialogs'}
-                           render={() => <Dialogs dialogs={props.state.dialogs} messages={props.state.messages}/>}/>
-                    <Route exact path={'/profile'} render={() => <Profile posts={props.state.posts}/>}/>
+                           render={() => <Dialogs state={props.state.dialogsPage}/>}/>
+                    <Route exact path={'/profile'}
+                           render={() => <Profile
+                               state={props.state.profilePage}
+                               addPost={props.addPost}/>}/>
                     <Route exact path={'/news'} render={() => <News/>}/>
                     <Route exact path={'/music'} render={() => <Music/>}/>
                     <Route exact path={'/settings'} render={() => <Settings/>}/>
