@@ -1,6 +1,7 @@
 import {fchmod} from "fs";
 import {rerenderEntireTree} from "../render";
 
+
 export type PostType = {
     message: string
     likesCount: number
@@ -16,6 +17,7 @@ export type MessageType = {
 }
 export type ProfilePageType = {
     posts: Array<PostType>
+    newPostText: string
 }
 export type MessagesPageType = {
     dialogs: Array<DialogType>
@@ -36,6 +38,7 @@ export let state: StateType = {
             {id: 2, message: "It's my first applee", likesCount: 152},
             {id: 2, message: "It's my first applee", likesCount: 152},
         ],
+        newPostText: 'Vladislav you can do it for yourself'
     },
     dialogsPage: {
         dialogs: [
@@ -51,12 +54,20 @@ export let state: StateType = {
     }
 }
 
-export let addPost = (postMessage: string) => {
+
+export let addPost = () => {
     let newPost = {
         id: 5,
-        message: postMessage,
+        message: state.profilePage.newPostText,
         likesCount: 0
     }
     state.profilePage.posts.push(newPost)
+    state.profilePage.newPostText = ''
+
+    rerenderEntireTree(state)
+}
+
+export let updateNewPostText = (newText:string) => {
+    state.profilePage.newPostText = newText
     rerenderEntireTree(state)
 }
