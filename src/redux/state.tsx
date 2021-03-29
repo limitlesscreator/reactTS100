@@ -1,5 +1,4 @@
 import {fchmod} from "fs";
-import {rerenderEntireTree} from "../render";
 
 
 export type PostType = {
@@ -30,6 +29,11 @@ export type StateType = {
     dialogsPage: MessagesPageType
 }
 
+let rerenderEntireTree = (state:any) => {
+    console.log('State changed')
+}
+
+
 export let state: StateType = {
     profilePage: {
         posts: [
@@ -55,19 +59,23 @@ export let state: StateType = {
 }
 
 
-export let addPost = () => {
+export const addPost = () => {
     let newPost = {
         id: 5,
         message: state.profilePage.newPostText,
         likesCount: 0
-    }
+     }
     state.profilePage.posts.push(newPost)
     state.profilePage.newPostText = ''
 
+    rerenderEntireTree(state);
+}
+
+export const updateNewPostText = (newText:string) => {
+    state.profilePage.newPostText = newText
     rerenderEntireTree(state)
 }
 
-export let updateNewPostText = (newText:string) => {
-    state.profilePage.newPostText = newText
-    rerenderEntireTree(state)
+export const subscribe = (observer:any) => {
+    rerenderEntireTree = observer
 }

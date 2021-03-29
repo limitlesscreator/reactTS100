@@ -10,6 +10,7 @@ type PropsType = {
     newPostText: string
     updateNewPostText: (message: string) => void
 }
+    
 
 
 export const Profile = (props: PropsType) => {
