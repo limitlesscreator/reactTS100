@@ -1,16 +1,25 @@
 import React from 'react';
-import './App.css';
-import {Footer} from "./components/Footer";
-import {Main} from "./components/Main";
-import {Header} from "./components/Header";
-
+import s from './StylesModule/App.module.sass'
 
 const App = () => {
     return (
-        <div className='App'>
-            <Header/>
-            <Main/>
-            <Footer/>
+        <div className={s.app}>
+            <div className={s.header}></div>
+            <div className={s.flex}>
+                <div className={s.navBar}>
+                    <div>Profile</div>
+                    <div>Messages</div>
+                    <div>News</div>
+                    <div>Music</div>
+                    <div>Settings</div>
+                </div>
+                <div className={s.content}>
+                    <div>ava description</div>
+                    <div>My posts</div>
+                    <div>New post</div>
+                    <div>post 1</div>
+                </div>
+            </div>
         </div>
     );
 }
