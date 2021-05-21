@@ -1,8 +1,8 @@
 import React from 'react';
 import s from './StylesModule/App.module.sass'
-import {Header} from "./components/Header";
-import {Navbar} from "./components/Navbar";
-import {Content} from "./components/Content";
+import {Header} from "./components/Header/Header";
+import {Navbar} from "./components/Navbar/Navbar";
+import {Profile} from "./components/Profile/Profile";
 
 const App = () => {
     return (
@@ -10,7 +10,7 @@ const App = () => {
             <Header/>
             <div className={s.flex}>
                 <Navbar/>
-                <Content/>
+                <Profile/>
             </div>
         </div>
     );

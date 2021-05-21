@@ -1,5 +1,5 @@
 import React, {} from "react";
-import s from "../StylesModule/Navbar.module.sass";
+import s from "../../StylesModule/Navbar.module.sass";
 
 export function Navbar(){
 

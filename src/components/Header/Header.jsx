@@ -1,5 +1,5 @@
 import React, {} from "react";
-import s from "../StylesModule/Header.module.sass";
+import s from "../../StylesModule/Header.module.sass";
 
 export function Header(){
 
